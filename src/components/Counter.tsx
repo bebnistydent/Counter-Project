@@ -1,28 +1,40 @@
 import React, { useState } from "react";
 import { Button } from "./Button";
 
+type counterPropsType = {
+    startValue: number;
+    maxValue: number;
+    counter: number;
+    setCounter: (value: number) => void
+};
 
 
-
-export const Counter = () => {
-    let [counter, setCounter] = useState(0);
+export const Counter = (props: counterPropsType) => {
+    // let [counter, setCounter] = useState(props.startValue);
+    // console.log(props.startValue, counter)
 
     const increnentCounter = () => {
-        //debugger
-       if(counter < 5) {
-        setCounter(++counter)
+        
+       if(props.counter < props.maxValue) {
+        props.setCounter(props.counter + 1);
        };
     };
 
-    const decrementCounter = () => {
-        setCounter(0)
+    const resetCounter = () => {
+        props.setCounter(props.startValue)
     }
     
     return (
         <div>
-            <h1>Counter: {counter}</h1>
-            <Button title = {"More"} onClickHandler={increnentCounter} disabled = {counter >= 5} />
-            <Button title = {"Less"} onClickHandler={decrementCounter} disabled = {counter === 0} />    
+            <h1>Counter: {props.counter}</h1>
+            <Button title = "More"
+             onClickHandler={increnentCounter} 
+             disabled = {props.counter >= props.maxValue} 
+             />
+
+            <Button title = "Less" 
+            onClickHandler={resetCounter} 
+            disabled = {props.counter === props.startValue} />    
         </div>
     )
     

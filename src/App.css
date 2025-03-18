@@ -1,4 +1,17 @@
 .App {
-  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  gap: 150px;
+  justify-content: center;
+  align-items: center;
+ 
 }
+
+
+
+
+
+
+
+
 
